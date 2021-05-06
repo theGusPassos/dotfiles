@@ -11,6 +11,7 @@
 	name = theguspassos
 	email = theguspassos@gmail.com
 [commit]
+	template = ~/.gitmessage
 	gpgsign = true
 [include]
 	path = ~/.gitconfig_local
