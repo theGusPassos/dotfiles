@@ -16,9 +16,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # theme from: https://github.com/romkatv/powerlevel10k#manual
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# command auto-correction.
-ENABLE_CORRECTION="true"
-
 # zsh init
 plugins=(git autojump)
 source $ZSH/oh-my-zsh.sh
