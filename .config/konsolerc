@@ -1,0 +1,21 @@
+MenuBar=Disabled
+
+[Desktop Entry]
+DefaultProfile=my custom.profile
+
+[General]
+ConfigVersion=1
+
+[MainWindow]
+ToolBarsMovable=Enabled
+
+[MainWindow][Toolbar sessionToolbar]
+IconSize=48
+ToolButtonStyle=IconOnly
+
+[Toolbar sessionToolbar]
+IconSize=48
+ToolButtonStyle=IconOnly
+
+[UiSettings]
+ColorScheme=
