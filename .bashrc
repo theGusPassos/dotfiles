@@ -1,5 +1,5 @@
 # Set the PATH
-export PATH=$HOME/bin:$PATH:/usr/share/dotnet/:/home/gus/.local/bin:/usr/share/lua/bin
+export PATH=$HOME/bin:$PATH:/usr/share/dotnet/:/home/gus/.local/bin:/usr/share/lua/bin:/usr/local/bin/lein
 
 export PS1='\[\e[0;36m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[0m\]>'
 export LS_COLORS='di=01;34:fi=0;37'
@@ -14,6 +14,8 @@ alias mv='mv -vi'
 alias cpv='rsync -avh --info=progress2'
 
 alias vi='nvim'
+
+alias projects='cd /home/gus/Documents/projects'
 
 bind 'set completion-ignore-case on'
 

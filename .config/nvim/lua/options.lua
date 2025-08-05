@@ -3,6 +3,7 @@ local global = vim.g
 local o = vim.opt
 
 global.mapleader = " "
+global.maplocalleader = ","
 
 o.clipboard = 'unnamedplus'
 o.completeopt = {'menu', 'menuone', 'noselect'}

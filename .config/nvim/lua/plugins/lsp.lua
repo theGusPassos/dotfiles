@@ -49,5 +49,15 @@ return {
                 end, { buffer = bufnr, desc = "Toggle inlay hints" })
             end
         })
+
+        require("lspconfig").clojure_lsp.setup({
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                settings = {
+                    clojure = {
+                        -- Add custom LSP settings here (optional)
+                        lint = { async = true },
+                    },
+                },
+        })
     end
 }
