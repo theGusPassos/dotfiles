@@ -29,7 +29,6 @@ return {
         -- General LSP keymaps and setup
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
-                -- local client = vim.lsp.get_client_by_id(args.data.client_id)
                 local bufnr = args.buf
 
                 -- General LSP keymaps
@@ -50,14 +49,24 @@ return {
             end
         })
 
-        require("lspconfig").clojure_lsp.setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                settings = {
-                    clojure = {
-                        -- Add custom LSP settings here (optional)
-                        lint = { async = true },
-                    },
-                },
+        vim.lsp.config("clojure_lsp", {root_dir = function(bufnr, on_dir)
+            local pattern = vim.api.nvim_buf_get_name(bufnr)
+            local util = require("lspconfig.util")
+            local fallback = vim.loop.cwd()
+            local patterns = {"project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git", "bb.edn"}
+            local root = util.root_pattern(patterns)(pattern)
+            return on_dir((root or fallback))
+        end
         })
+
+        vim.lsp.enable('clojure_lsp')
+
+        vim.lsp.enable('lua_ls')
+
+        vim.lsp.config('ts_ls', {
+            cmd = { 'typescript-language-server', '--stdio' },
+            filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        })
+        vim.lsp.enable("ts_ls")
     end
 }

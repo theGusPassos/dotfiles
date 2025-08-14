@@ -20,3 +20,5 @@ alias projects='cd /home/gus/Documents/projects'
 bind 'set completion-ignore-case on'
 
 eval "$(oh-my-posh init bash --config 'catppuccin_mocha')"
+
+. /usr/share/nvm/init-nvm.sh
