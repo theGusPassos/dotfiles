@@ -28,3 +28,9 @@ o.incsearch = true
 o.hlsearch = false
 o.ignorecase = true
 o.smartcase = true
+
+o.splitbelow = true
+o.splitright = true
+
+o.ignorecase = true
+o.termguicolors = true
