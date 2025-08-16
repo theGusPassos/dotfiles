@@ -23,7 +23,7 @@ return {
     vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
     vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
     vim.api.nvim_set_hl(0, "CmpItemMenu", { bg = "NONE", fg = "#6A9955", italic = true })
-    
+
     -- Highlight group for selected item in completion menu
     vim.api.nvim_set_hl(0, "CmpSel", { bg = "#3a3d41", fg = "#ffffff" })
 

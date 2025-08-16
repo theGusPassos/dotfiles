@@ -1,4 +1,3 @@
-
 vim.keymap.set('n', '<leader>gt', '<cmd>exe v:count1 . ":ToggleTerm size=10" <CR>', opts)
 
 function _G.set_terminal_keymaps()
