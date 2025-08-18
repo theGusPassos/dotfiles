@@ -18,6 +18,10 @@ wallpaperplugin=org.kde.image
 [Containments][1][General]
 positions={"2752x1152":[]}
 
+[Containments][1][Wallpaper][org.kde.image][General]
+Image=/home/gus/Documents/Wallpapers/japan-sunset-purple-evening-4k-5m.jpg
+SlidePaths=/home/gus/.local/share/wallpapers/,/usr/share/wallpapers/
+
 [Containments][21]
 activityId=
 formfactor=2
@@ -26,10 +30,6 @@ lastScreen=0
 location=3
 plugin=org.kde.panel
 wallpaperplugin=org.kde.image
-
-[Containments][21][Applets][22]
-immutability=1
-plugin=org.kde.plasma.appmenu
 
 [Containments][21][Applets][24]
 immutability=1
@@ -146,13 +146,18 @@ shownItems=org.kde.plasma.volume
 [Containments][21][Applets][43]
 immutability=1
 plugin=org.kde.plasma.appmenu
+transient=true
 
 [Containments][21][Applets][44]
 immutability=1
 plugin=org.kde.plasma.appmenu
 
+[Containments][21][Applets][44][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
 [Containments][21][General]
-AppletOrder=3;29;24;22;43;44;26;31;30;28;27
+AppletOrder=3;29;24;44;26;31;30;28;27
 
 [Containments][45]
 activityId=
