@@ -20,7 +20,7 @@ TabletMode=off
 [Plugins]
 blurEnabled=true
 karouselEnabled=true
-krohnkiteEnabled=true
+krohnkiteEnabled=false
 minimizeallEnabled=true
 mousemarkEnabled=true
 screenedgeEnabled=false
