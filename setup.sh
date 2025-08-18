@@ -25,7 +25,11 @@ function linkDotfile {
 }
 
 
-linkDotfile .config/nvim
 linkDotfile .bashrc
+linkDotfile .config/nvim
 linkDotfile .config/konsolerc
-
+linkDotfile .config/kdeglobals
+linkDotfile .config/kglobalshortcutsrc
+linkDotfile .config/kplasmarc
+linkDotfile .config/kwinrc
+linkDotfile .local/share/kwin/scripts
