@@ -10,5 +10,4 @@ require("mason").setup({
     },
 })
 
-
 vim.cmd [[colorscheme everforest]]

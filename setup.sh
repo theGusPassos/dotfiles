@@ -1,6 +1,5 @@
 # !/bin/bash
 
-
 if command -v oh-my-posh &> /dev/null; then
     echo "Oh My Posh is already installed. Skipping installation."
 else
@@ -9,25 +8,46 @@ fi
 
 dotfilesDir=$(pwd)
 
-function linkDotfile {
-  srcPath="${dotfilesDir}/${1}"
-  dest="${HOME}/${1}"
-  dateStr=$(date +%Y-%m-%d-%H%M)
+linkFilesInFolder() {
+  local srcPath="${dotfilesDir}/${1}"
+  local destDir="${HOME}/${1}"
+  local dateStr=$(date +%Y-%m-%d-%H%M)
 
-  if [ -d "${srcPath}" ]; then
-    echo "Processing directory: ${srcPath}"
-    mkdir -p "${dest}"
-    
-    find "${srcPath}" -mindepth 1 -maxdepth 1 -print0 | while IFS= read -r -d $'\0' item; do
-      itemName=$(basename "${item}")
-      newSrcPath="${srcPath}/${itemName}"
-      newDest="${dest}/${itemName}"
-      relativeSrcPath="${1}/${itemName}"
-      
-      # Recursively process each item
-      linkDotfile "${relativeSrcPath}"
-    done
-    return
+  if [ ! -d "${srcPath}" ]; then
+    echo "Error, not a dir: ${srcPath}"
+    return 1
+  fi
+
+  echo "Linking files from dir: ${srcPath}"
+  mkdir -p "${destDir}"
+
+  while IFS= read -r -d $'\0' item; do
+    if [ -f "${item}" ]; then
+      local itemName=$(basename "${item}")
+      local newDest="${destDir}/${itemName}"
+
+      if [ -h "${newDest}" ]; then
+        echo "Removing existing symlink: ${newDest}"
+        rm "${newDest}"
+      elif [ -e "${newDest}" ]; then
+        echo "Backing up existing: ${newDest}"
+        mv "${newDest}" "${newDest}.${dateStr}"
+      fi
+
+      echo "Creating symlink: ${newDest} -> ${item}"
+      ln -s "${item}" "${newDest}"
+    fi
+  done < <(find "${srcPath}" -maxdepth 1 -type f -print0)
+}
+
+linkFolder() {
+  local srcPath="${dotfilesDir}/${1}"
+  local dest="${HOME}/${1}"
+  local dateStr=$(date +%Y-%m-%d-%H%M)
+
+  if [ ! -e "${srcPath}" ]; then
+    echo "Error, does not exist: ${srcPath}"
+    return 1
   fi
 
   mkdir -p "$(dirname "${dest}")"
@@ -44,8 +64,8 @@ function linkDotfile {
   ln -s "${srcPath}" "${dest}"
 }
 
-
-linkDotfile .bashrc
-linkDotfile .config
-linkDotfile .local/share/kwin/scripts/krohnkite
+linkFilesInFolder /
+linkFilesInFolder .config
+linkFolder .config/nvim
+linkFolder .local/share/kwin/scripts/krohnkite
 
