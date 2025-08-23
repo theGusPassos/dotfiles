@@ -133,8 +133,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [DirSelect Dialog]
-DirSelectDialog Size=820,585
-History Items[$e]=file:$HOME/Documents/Themes/Dracula-purple,file:$HOME/Documents/Themes
+DirSelectDialog Size=820,584
+History Items[$e]=file:$HOME/Downloads/torrents,file:$HOME/Documents/Themes/Dracula-purple,file:$HOME/Documents/Themes
 Splitter State=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x8c\x00\x00\x02\xa8\x00\xff\xff\xff\xff\x01\x00\x00\x00\x01\x00
 
 [General]
@@ -167,7 +167,7 @@ View Style=DetailTree
 
 [KScreen]
 ScreenScaleFactors=HDMI-A-1=1;DP-1=1;
-XwaylandClientsScale=false
+XwaylandClientsScale=true
 
 [KShortcutsDialog Settings]
 Dialog Size=1084,786

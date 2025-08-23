@@ -1,5 +1,5 @@
 [Activities][LastVirtualDesktop]
-00624c31-21ae-443c-b3e8-d39725a825bb=8c705770-dace-436a-8572-fa4c58119687
+00624c31-21ae-443c-b3e8-d39725a825bb=04255fa6-d474-40fb-b315-8a0ee88b96f6
 3d5db8da-c4e1-4b26-8285-95707a535c10=04255fa6-d474-40fb-b315-8a0ee88b96f6
 
 [Desktops]
@@ -53,6 +53,9 @@ ShowDesktopMode=1
 [Tiling]
 padding=4
 
+[Tiling][04255fa6-d474-40fb-b315-8a0ee88b96f6][]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][04255fa6-d474-40fb-b315-8a0ee88b96f6][12751660-08f3-4198-aa5e-ae1d6fadd41f]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
@@ -62,10 +65,16 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Tiling][51d44910-c842-4467-92d8-72fa2893dfc9][12751660-08f3-4198-aa5e-ae1d6fadd41f]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][5d50b9ee-426a-4063-9e39-0006b18c7277][]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][5d50b9ee-426a-4063-9e39-0006b18c7277][12751660-08f3-4198-aa5e-ae1d6fadd41f]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][5d50b9ee-426a-4063-9e39-0006b18c7277][8c1726fd-7198-4d34-aed4-abb1ae72fb86]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][8c705770-dace-436a-8572-fa4c58119687][]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][8c705770-dace-436a-8572-fa4c58119687][12751660-08f3-4198-aa5e-ae1d6fadd41f]
@@ -77,3 +86,6 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Wayland]
 EnablePrimarySelection=false
 InputMethod[$e]=/usr/share/applications/org.fcitx.Fcitx5.desktop
+
+[Xwayland]
+Scale=1.25

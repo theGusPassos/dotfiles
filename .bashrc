@@ -16,6 +16,7 @@ alias cpv='rsync -avh --info=progress2'
 alias vi='nvim'
 
 alias projects='cd /home/gus/Documents/projects'
+alias games='cd /home/gus/Documents/projects/games'
 
 bind 'set completion-ignore-case on'
 

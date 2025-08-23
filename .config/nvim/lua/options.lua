@@ -5,6 +5,8 @@ local o = vim.opt
 global.mapleader = " "
 global.maplocalleader = ","
 
+o.colorcolumn = "120"
+
 o.clipboard = 'unnamedplus'
 o.completeopt = {'menu', 'menuone', 'noselect'}
 o.mouse = 'a'
@@ -34,3 +36,4 @@ o.splitright = true
 
 o.ignorecase = true
 o.termguicolors = true
+
