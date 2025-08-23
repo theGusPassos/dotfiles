@@ -14,4 +14,7 @@ return {
       end,
       ft = { "markdown" },
     },
+    {
+        "sindrets/diffview.nvim",
+    }
 }
