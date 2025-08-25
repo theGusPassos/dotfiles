@@ -1,5 +1,5 @@
 # Set the PATH
-export PATH=$HOME/bin:$PATH:/usr/share/dotnet/:/home/gus/.local/bin:/usr/share/lua/bin:/usr/local/bin/lein
+export PATH=$HOME/bin:$PATH:/usr/share/dotnet/:/home/gus/.local/bin:/usr/share/lua/bin:/usr/local/bin/lein:/home/gus/.dotnet/tools
 
 export PS1='\[\e[0;36m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[0m\]>'
 export LS_COLORS='di=01;34:fi=0;37'
