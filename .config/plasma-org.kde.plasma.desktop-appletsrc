@@ -162,7 +162,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][21][Applets][31][Applets][70][Configuration]
-PreloadWeight=34
+PreloadWeight=18
 
 [Containments][21][Applets][31][Applets][85]
 immutability=1
@@ -176,9 +176,9 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][21][Applets][31][General]
-extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.cameraindicator,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.devicenotifier,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.kdeconnect
+extraItems=org.kde.plasma.keyboardlayout,org.kde.plasma.cameraindicator,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.devicenotifier,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.volume,org.kde.plasma.networkmanagement
 hiddenItems=org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.devicenotifier,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.clipboard
-knownItems=org.kde.plasma.bluetooth,org.kde.plasma.keyboardlayout,org.kde.plasma.battery,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.brightness,org.kde.plasma.clipboard,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.volume,org.kde.plasma.networkmanagement,org.kde.kdeconnect
+knownItems=org.kde.plasma.bluetooth,org.kde.plasma.keyboardlayout,org.kde.plasma.battery,org.kde.plasma.devicenotifier,org.kde.plasma.cameraindicator,org.kde.plasma.brightness,org.kde.plasma.clipboard,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.kscreen,org.kde.plasma.volume,org.kde.plasma.networkmanagement
 shownItems=org.kde.plasma.volume
 
 [Containments][21][Applets][44]
