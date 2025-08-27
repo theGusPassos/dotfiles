@@ -1,6 +1,6 @@
 vim.lsp.config("roslyn", {
     on_attach = function()
-        -- print("This will run when the server attaches!")
+        print("roslyn attached")
     end,
     settings = {
         ["csharp|inlay_hints"] = {
@@ -14,10 +14,12 @@ vim.lsp.config("roslyn", {
 })
 
 return {
-    "seblyng/roslyn.nvim",
-    ft = "cs",
-    opts = {
-        filewatching = "roslyn",
+    {
+        "seblyng/roslyn.nvim",
+        ft = "cs",
+        opts = {
+            filewatching = "roslyn",
+        },
     },
     {
         "GustavEikaas/easy-dotnet.nvim",

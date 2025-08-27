@@ -73,7 +73,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][21][Applets][30][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 popupHeight=450
 popupWidth=560
 
@@ -97,7 +97,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][21][Applets][31][Applets][33][Configuration]
-PreloadWeight=65
+PreloadWeight=75
 
 [Containments][21][Applets][31][Applets][34]
 immutability=1
@@ -162,7 +162,7 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][21][Applets][31][Applets][70][Configuration]
-PreloadWeight=18
+PreloadWeight=10
 
 [Containments][21][Applets][31][Applets][85]
 immutability=1
