@@ -10,5 +10,5 @@ require("mason").setup({
     },
 })
 
-vim.cmd [[colorscheme everforest]]
+vim.cmd [[colorscheme kanagawa]]
 

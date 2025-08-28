@@ -27,5 +27,8 @@ return {
             require("everforest").setup({
             })
         end,
+    },
+    {
+        "rebelot/kanagawa.nvim",
     }
 }
