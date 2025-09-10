@@ -7,6 +7,7 @@ RightButton;NoModifier=org.kde.contextmenu
 [Containments][1]
 ItemGeometries-2732x1536=
 ItemGeometries-2752x1152=
+ItemGeometries-3440x1440=
 ItemGeometriesHorizontal=
 activityId=00624c31-21ae-443c-b3e8-d39725a825bb
 formfactor=0
@@ -17,7 +18,7 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][1][General]
-positions={"2752x1152":[]}
+positions={"2752x1152":[],"3440x1440":[]}
 
 [Containments][1][Wallpaper][org.kde.image][General]
 Image=/home/gus/Documents/Wallpapers/japan-sunset-purple-evening-4k-5m.jpg
@@ -73,9 +74,13 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][21][Applets][30][Configuration]
-PreloadWeight=60
+PreloadWeight=100
 popupHeight=450
 popupWidth=560
+
+[Containments][21][Applets][30][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][21][Applets][31]
 activityId=
@@ -97,7 +102,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][21][Applets][31][Applets][33][Configuration]
-PreloadWeight=75
+PreloadWeight=85
 
 [Containments][21][Applets][31][Applets][34]
 immutability=1
@@ -110,6 +115,9 @@ plugin=org.kde.plasma.clipboard
 [Containments][21][Applets][31][Applets][36]
 immutability=1
 plugin=org.kde.plasma.notifications
+
+[Containments][21][Applets][31][Applets][36][Configuration]
+PreloadWeight=55
 
 [Containments][21][Applets][31][Applets][37]
 immutability=1
@@ -148,7 +156,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][21][Applets][31][Applets][42][Configuration]
-PreloadWeight=85
+PreloadWeight=90
 
 [Containments][21][Applets][31][Applets][69]
 immutability=1

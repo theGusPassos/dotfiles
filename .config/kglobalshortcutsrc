@@ -11,8 +11,8 @@ Switch keyboard layout to English (US, intl., with dead keys)=none,none,Switch k
 Switch keyboard layout to English (intl., with AltGr dead keys)=none,none,Switch keyboard layout to English (intl.\\, with AltGr dead keys)
 Switch keyboard layout to Portuguese=none,none,Switch keyboard layout to Portuguese
 Switch keyboard layout to Portuguese (Brazil, Sun Type 6/7)=none,none,Switch keyboard layout to Portuguese (Brazil\\, Sun Type 6/7)
-Switch to Last-Used Keyboard Layout=none,Meta+Alt+L,
-Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,
+Switch to Last-Used Keyboard Layout=none,Meta+Alt+L,Switch to Last-Used Keyboard Layout
+Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
 [juk]
