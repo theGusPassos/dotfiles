@@ -60,7 +60,6 @@ return {
                     return on_dir((root or fallback))
                 end
             })
-
             vim.lsp.enable('clojure_lsp')
 
             vim.lsp.enable('lua_ls')
@@ -70,6 +69,19 @@ return {
                 filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
             })
             vim.lsp.enable("ts_ls")
+
+            vim.lsp.config("gopls", {
+                settings = {
+                    gopls = {
+                        analyses = {
+                            unusedparams = true,
+                        },
+                        staticcheck = true,
+                        gofumpt = true,
+                    }
+                }
+            })
+            vim.lsp.enable("gopls")
         end
     },
     {
@@ -134,5 +146,5 @@ return {
     },
     {
         'theHamsta/nvim-dap-virtual-text'
-    }
+    },
 }

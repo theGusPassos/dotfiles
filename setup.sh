@@ -1,90 +1,71 @@
-# !/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-if command -v oh-my-posh &> /dev/null; then
-    echo "Oh My Posh is already installed. Skipping installation."
+if command -v oh-my-posh &>/dev/null; then
+  echo "✅ Oh My Posh already installed."
 else
-    curl -s https://ohmyposh.dev/install.sh | bash -s
+  echo "⬇️ Installing Oh My Posh..."
+  curl -s https://ohmyposh.dev/install.sh | bash -s
 fi
 
-dotfilesDir=$(pwd)
+dotfilesDir="$(pwd)"
+timestamp="$(date +%Y-%m-%d-%H%M)"
 
-function linkFile {
-  srcPath="${dotfilesDir}/${1}"
-  dest="${HOME}/${1}"
-  dateStr=$(date +%Y-%m-%d-%H%M)
+backup_or_remove() {
+  local dest="$1"
 
-  mkdir -p "$(dirname "${dest}")"
-
-  if [ -h "${dest}" ]; then
-    echo "Removing existing symlink: ${dest}"
-    rm "${dest}"
-  elif [ -e "${dest}" ]; then
-    echo "Backing up existing: ${dest}"
-    mv "${dest}" "${dest}.${dateStr}"
+  if [ -h "$dest" ]; then
+    echo "🔁 Removing existing symlink: $dest"
+    rm "$dest"
+  elif [ -e "$dest" ]; then
+    echo "🗄️ Backing up existing: $dest"
+    mv "$dest" "${dest}.${timestamp}"
   fi
-
-  echo "Creating symlink: ${dest} -> ${srcPath}"
-  ln -s "${srcPath}" "${dest}"
 }
 
-linkFilesInFolder() {
-  local srcPath="${dotfilesDir}/${1}"
-  local destDir="${HOME}/${1}"
-  local dateStr=$(date +%Y-%m-%d-%H%M)
+create_symlink() {
+  local src="$1"
+  local dest="$2"
 
-  if [ ! -d "${srcPath}" ]; then
-    echo "Error, not a dir: ${srcPath}"
+  mkdir -p "$(dirname "$dest")"
+  backup_or_remove "$dest"
+
+  echo "🔗 Creating symlink: $dest → $src"
+  ln -s "$src" "$dest"
+}
+
+link_file() {
+  local relPath="$1"
+  create_symlink "${dotfilesDir}/${relPath}" "${HOME}/${relPath}"
+}
+
+link_files_in_folder() {
+  local relDir="$1"
+  local srcDir="${dotfilesDir}/${relDir}"
+  local destDir="${HOME}/${relDir}"
+
+  if [ ! -d "$srcDir" ]; then
+    echo "❌ Error: not a directory: $srcDir"
     return 1
   fi
 
-  echo "Linking files from dir: ${srcPath}"
-  mkdir -p "${destDir}"
+  echo "📁 Linking files from: $srcDir"
+  mkdir -p "$destDir"
 
-  while IFS= read -r -d $'\0' item; do
-    if [ -f "${item}" ]; then
-      local itemName=$(basename "${item}")
-      local newDest="${destDir}/${itemName}"
-
-      if [ -h "${newDest}" ]; then
-        echo "Removing existing symlink: ${newDest}"
-        rm "${newDest}"
-      elif [ -e "${newDest}" ]; then
-        echo "Backing up existing: ${newDest}"
-        mv "${newDest}" "${newDest}.${dateStr}"
-      fi
-
-      echo "Creating symlink: ${newDest} -> ${item}"
-      ln -s "${item}" "${newDest}"
-    fi
-  done < <(find "${srcPath}" -maxdepth 1 -type f -print0)
+  find "$srcDir" -maxdepth 1 -type f -print0 | while IFS= read -r -d $'\0' file; do
+    create_symlink "$file" "${destDir}/$(basename "$file")"
+  done
 }
 
-linkFolder() {
-  local srcPath="${dotfilesDir}/${1}"
-  local dest="${HOME}/${1}"
-  local dateStr=$(date +%Y-%m-%d-%H%M)
-
-  if [ ! -e "${srcPath}" ]; then
-    echo "Error, does not exist: ${srcPath}"
-    return 1
-  fi
-
-  mkdir -p "$(dirname "${dest}")"
-
-  if [ -h "${dest}" ]; then
-    echo "Removing existing symlink: ${dest}"
-    rm "${dest}"
-  elif [ -e "${dest}" ]; then
-    echo "Backing up existing: ${dest}"
-    mv "${dest}" "${dest}.${dateStr}"
-  fi
-
-  echo "Creating symlink: ${dest} -> ${srcPath}"
-  ln -s "${srcPath}" "${dest}"
+link_folder() {
+  local relDir="$1"
+  create_symlink "${dotfilesDir}/${relDir}" "${HOME}/${relDir}"
 }
 
-linkFile .bashrc
-linkFilesInFolder .config
-linkFolder .config/nvim
-linkFolder .local/share/kwin/scripts/krohnkite
+link_file ".bashrc"
+link_files_in_folder ".config"
+link_folder ".config/nvim"
+link_folder ".local/share/kwin/scripts/krohnkite"
+
+echo "✅ All symlinks created successfully."
 

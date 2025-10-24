@@ -50,8 +50,9 @@ immutability=1
 plugin=Plasma.Control.Hub
 
 [Containments][21][Applets][28][Configuration]
-popupHeight=400
-popupWidth=560
+PreloadWeight=60
+popupHeight=439
+popupWidth=324
 
 [Containments][21][Applets][29]
 immutability=1
@@ -102,7 +103,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][21][Applets][31][Applets][33][Configuration]
-PreloadWeight=85
+PreloadWeight=100
 
 [Containments][21][Applets][31][Applets][34]
 immutability=1
@@ -156,7 +157,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][21][Applets][31][Applets][42][Configuration]
-PreloadWeight=90
+PreloadWeight=100
 
 [Containments][21][Applets][31][Applets][69]
 immutability=1
@@ -215,6 +216,18 @@ plugin=org.kde.plasma.icontasks
 
 [Containments][45][General]
 AppletOrder=68
+
+[Containments][71]
+activityId=00624c31-21ae-443c-b3e8-d39725a825bb
+formfactor=0
+immutability=1
+lastScreen=1
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][71][General]
+positions={"1920x1080":[]}
 
 [Containments45Appletsts][68][Configuration][General]
 launchers=preferred://browser,preferred://filemanager
