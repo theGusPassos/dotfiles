@@ -20,6 +20,6 @@ alias games='cd /home/gus/Documents/projects/games'
 
 bind 'set completion-ignore-case on'
 
-eval "$(oh-my-posh init bash --config 'catppuccin_mocha')"
+eval "$(oh-my-posh init bash --config ~/dotfiles/omp-themes/amro.omp.json)"
 
 . /usr/share/nvm/init-nvm.sh

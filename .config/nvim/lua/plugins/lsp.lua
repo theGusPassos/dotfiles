@@ -73,6 +73,8 @@ return {
             vim.lsp.config("gopls", {
                 settings = {
                     gopls = {
+                        -- multi module
+                        experimentalWorkspaceModule = true,
                         analyses = {
                             unusedparams = true,
                         },
