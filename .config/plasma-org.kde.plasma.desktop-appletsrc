@@ -215,6 +215,9 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.plasma.icontasks
 
+[Containments][45][Applets][68][Configuration][General]
+launchers=applications:systemsettings.desktop,preferred://filemanager,preferred://browser
+
 [Containments][45][General]
 AppletOrder=68
 
