@@ -66,6 +66,7 @@ link_file ".bashrc"
 link_files_in_folder ".config"
 link_folder ".config/nvim"
 link_folder ".local/share/kwin/scripts/krohnkite"
+link_folder ".local/share/konsole"
 
 echo "✅ All symlinks created successfully."
 
