@@ -84,6 +84,9 @@ return {
                 }
             })
             vim.lsp.enable("gopls")
+
+            vim.lsp.config("jdtls", {});
+            vim.lsp.enable("jdtls");
         end
     },
     {
