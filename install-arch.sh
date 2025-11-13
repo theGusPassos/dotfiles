@@ -34,15 +34,19 @@ create_symlink() {
   ln -s "$src" "$dest"
 }
 
+# links one file
 link_file() {
   local relPath="$1"
-  create_symlink "${dotfilesDir}/${relPath}" "${HOME}/${relPath}"
+  local targetPath="$2"
+  create_symlink "${dotfilesDir}/${relPath}" "${HOME}/${targetPath}"
 }
 
+# links all files on folder
 link_files_in_folder() {
   local relDir="$1"
+  local targetDir="$2"
   local srcDir="${dotfilesDir}/${relDir}"
-  local destDir="${HOME}/${relDir}"
+  local destDir="${HOME}/${targetDir}"
 
   if [ ! -d "$srcDir" ]; then
     echo "❌ Error: not a directory: $srcDir"
@@ -57,16 +61,19 @@ link_files_in_folder() {
   done
 }
 
+# links the folder
 link_folder() {
   local relDir="$1"
-  create_symlink "${dotfilesDir}/${relDir}" "${HOME}/${relDir}"
+  local targetDir="$2"
+  create_symlink "${dotfilesDir}/${relDir}" "${HOME}/${targetDir}"
 }
 
-link_file ".bashrc"
-link_files_in_folder ".config"
-link_folder ".config/nvim"
-link_folder ".local/share/kwin/scripts/krohnkite"
-link_folder ".local/share/konsole"
+link_file "common/.bashrc" ".bashrc"
+link_folder "common/nvim" ".config/nvim"
+
+link_files_in_folder "arch/.config" ".config"
+link_folder "arch/.local/share/kwin/scripts/krohnkite" ".local/share/kwin/scripts/krohnkite"
+link_folder "arch/.local/share/konsole" ".local/share/konsole"
 
 echo "✅ All symlinks created successfully."
 
