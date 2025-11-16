@@ -30,5 +30,33 @@ return {
     },
     {
         "rebelot/kanagawa.nvim",
+    },
+    {
+        'sainnhe/gruvbox-material',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            -- Optionally configure and load the colorscheme
+            -- directly inside the plugin declaration.
+            vim.g.gruvbox_material_enable_italic = true
+            vim.cmd.colorscheme('gruvbox-material')
+        end
+    },
+    {
+        "rose-pine/neovim"
+    },
+    {
+        "scottmckendry/cyberdream.nvim",
+        config = function()
+            require("cyberdream").setup({
+                variant = "dark",
+                transparent = true,
+                saturation = 1,
+                italic_comments = false,
+                hide_fillchars = false,
+                borderless_pickers = false,
+                terminal_colors = true,
+            })
+        end
     }
 }
