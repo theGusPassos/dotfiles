@@ -125,7 +125,7 @@ return {
             vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
         end
     },
-    { "nvim-neotest/nvim-nio" },
+    { "nvim-neotes t/nvim-nio" },
     {
         'rcarriga/nvim-dap-ui',
         requires = { 'mfussengger/nvim-dap', 'nvim-neotest/nvim-nio' },

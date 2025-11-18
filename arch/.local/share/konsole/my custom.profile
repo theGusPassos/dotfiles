@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Nordic
-Font=Courier Prime,16,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+Font=Victor Mono SemiBold,16,-1,5,600,0,0,0,0,0,0,0,0,0,0,1,Regular
 UseFontBrailleChararacters=false
 
 [Cursor Options]

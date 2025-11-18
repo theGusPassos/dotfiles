@@ -10,18 +10,9 @@ require("mason").setup({
     },
 })
 
-require("nvim-treesitter.configs").setup({
-    ensure_installed = { "c_sharp", "clojure", "go", "gomod", "gosum", "gotmpl", "java"},
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = true,
-    }
-})
-
 vim.cmd [[colorscheme cyberdream]]
 
 -- theme transparency
-
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
