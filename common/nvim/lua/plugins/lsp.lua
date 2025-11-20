@@ -41,6 +41,12 @@ return {
                         vim.lsp.buf.format({ async = true })
                     end, { buffer = bufnr })
 
+                    vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
+                        buffer = bufnr,
+                        noremap = true,
+                        silent = true,
+                    })
+
                     -- Diagnostic keymaps
                     vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float,
                         { buffer = bufnr, desc = "Show line diagnostics" })
@@ -62,26 +68,29 @@ return {
             })
             vim.lsp.enable('clojure_lsp')
 
-            vim.lsp.enable('lua_ls')
+            vim.lsp.config("lua_ls", {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
+                        runtime = {
+                            version = "LuaJIT",
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                    },
+                },
+            })
+            vim.lsp.enable("lua_ls")
 
             vim.lsp.config('ts_ls', {
                 cmd = { 'typescript-language-server', '--stdio' },
                 filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
             })
             vim.lsp.enable("ts_ls")
-
-            vim.lsp.config("gopls", {
-                settings = {
-                    gopls = {
-                        analyses = {
-                            unusedparams = true,
-                        },
-                        staticcheck = true,
-                        gofumpt = true,
-                    }
-                }
-            })
-            vim.lsp.enable("gopls")
 
             vim.lsp.config("jdtls", {});
             vim.lsp.enable("jdtls");
@@ -156,7 +165,8 @@ return {
             local g = vim.g
 
             g.ale_linters = {
-                go = { 'golangci-lint' }
+                go = { 'golangci-lint' },
+                lua = {},
             }
         end
     }

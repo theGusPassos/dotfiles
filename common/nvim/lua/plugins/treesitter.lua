@@ -11,6 +11,7 @@ return {
                 "gosum",
                 "gotmpl",
                 "java",
+                "sql",
             },
 
             highlight = {
