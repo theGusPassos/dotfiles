@@ -150,4 +150,14 @@ return {
     {
         'theHamsta/nvim-dap-virtual-text'
     },
+    {
+        'dense-analysis/ale',
+        config = function()
+            local g = vim.g
+
+            g.ale_linters = {
+                go = { 'golangci-lint' }
+            }
+        end
+    }
 }
