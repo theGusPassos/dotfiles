@@ -27,5 +27,15 @@ return {
                 },
             }
         end,
+    },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require("notify").setup()
+            vim.notify = require("notify")
+        end
+    },
+    {
+        "lewis6991/gitsigns.nvim",
     }
 }

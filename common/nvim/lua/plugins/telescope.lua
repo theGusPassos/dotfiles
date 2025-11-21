@@ -25,7 +25,9 @@ function telescope_custom_actions.multi_selection_open_vsplit(prompt_bufnr)
     telescope_custom_actions._multiopen(prompt_bufnr, "vsplit")
 end
 
-require('telescope').setup({
+local telescope = require('telescope')
+telescope.load_extension("notify")
+telescope.setup({
     defaults = {
         mappings = {
             i = {
