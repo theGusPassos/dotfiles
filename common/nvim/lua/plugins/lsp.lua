@@ -86,14 +86,27 @@ return {
             })
             vim.lsp.enable("lua_ls")
 
-            vim.lsp.config('ts_ls', {
-                cmd = { 'typescript-language-server', '--stdio' },
-                filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+            vim.lsp.enable("vtsls")
+            vim.lsp.config("vtsls", {
+                vtsls = {
+                    eslint = {
+                        enabled = false, -- ⛔ stops vtsls from delegating formatting to ESLint
+                    },
+                },
+                settings = {
+                    typescript = {
+                        format = { indentSize = 2, tabSize = 2, convertTabsToSpaces = true },
+                        preferences = { indentSize = 2, tabSize = 2 },
+                    },
+                    javascript = {
+                        format = { indentSize = 2, tabSize = 2, convertTabsToSpaces = true },
+                        preferences = { indentSize = 2, tabSize = 2 },
+                    },
+                }
             })
-            vim.lsp.enable("ts_ls")
 
-            vim.lsp.config("jdtls", {});
-            vim.lsp.enable("jdtls");
+            vim.lsp.config("jdtls", {})
+            vim.lsp.enable("jdtls")
         end
     },
     {
@@ -169,5 +182,11 @@ return {
                 lua = {},
             }
         end
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        config = function()
+            require("nvim-ts-autotag").setup()
+        end,
     }
 }

@@ -11,8 +11,10 @@ return {
                 "gomod",
                 "gosum",
                 "gotmpl",
+                "html",
                 "java",
                 "sql",
+                "tsx",
             },
 
             highlight = {

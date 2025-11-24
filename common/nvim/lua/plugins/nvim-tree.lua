@@ -6,6 +6,9 @@ return {
     },
     config = function()
         require("nvim-tree").setup({
+            filters = {
+                dotfiles = false,
+            },
             view = {
                 width = 35,
                 side = "left",
