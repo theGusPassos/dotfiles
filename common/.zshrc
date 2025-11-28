@@ -44,6 +44,8 @@ source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/gus/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-bindkey '[k^' history-substring-search-up
-bindkey 'J' history-substring-search-down
+bindkey '^[k' history-substring-search-up
+bindkey '^[j' history-substring-search-down
 
+
+bindkey '^F' autosuggest-accept
