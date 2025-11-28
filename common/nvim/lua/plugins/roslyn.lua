@@ -1,4 +1,7 @@
 vim.lsp.config("roslyn", {
+    root_dir = function(fname)
+        return require("lspconfig").util.root_pattern("*.sln", "*.csproj")(fname)
+    end,
     settings = {
         ["csharp|inlay_hints"] = {
             csharp_enable_inlay_hints_for_implicit_object_creation = true,
@@ -13,7 +16,7 @@ vim.lsp.config("roslyn", {
 return {
     {
         "seblyng/roslyn.nvim",
-        ft = "cs",
+        ft = { "cs", "csproj", "sln" },
         opts = {
             filewatching = "roslyn",
         },
