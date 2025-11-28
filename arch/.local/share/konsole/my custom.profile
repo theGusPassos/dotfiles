@@ -7,5 +7,6 @@ UseFontBrailleChararacters=false
 CursorShape=1
 
 [General]
+Command=/usr/bin/zsh
 Name=my custom
 Parent=FALLBACK/
