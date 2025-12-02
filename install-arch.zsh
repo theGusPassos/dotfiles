@@ -70,9 +70,9 @@ link_folder() {
   create_symlink "${dotfilesDir}/${relDir}" "${HOME}/${targetDir}"
 }
 
-link_file "common/.zshrc" ".zshrc"
 link_folder "common/nvim" ".config/nvim"
 
+link_file "arch/.zshrc" ".zshrc"
 link_files_in_folder "arch/.config" ".config"
 link_folder "arch/.local/share/kwin/scripts/krohnkite" ".local/share/kwin/scripts/krohnkite"
 link_folder "arch/.local/share/konsole" ".local/share/konsole"
