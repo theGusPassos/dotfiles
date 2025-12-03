@@ -70,8 +70,9 @@ link_folder() {
   create_symlink "${dotfilesDir}/${relDir}" "${HOME}/${targetDir}"
 }
 
-link_file "common/.zshrc" ".zshrc"
 link_folder "common/nvim" ".config/nvim"
+
+link_file "mac/.zshrc" ".zshrc"
 
 echo "✅ All symlinks created successfully."
 
