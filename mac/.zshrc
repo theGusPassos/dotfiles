@@ -4,6 +4,7 @@ SAVEHIST=1000
 
 # oh-my-zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
+
 ZSH_THEME="eastwood"
 plugins=(
     git
@@ -25,7 +26,7 @@ bindkey -v
 autoload -Uz compinit
 compinit
 
-export PATH="$HOME/bin:$PATH:/usr/share/dotnet/:/usr/share/lua/bin:/usr/local/bin/lein:/home/gus/.dotnet/tools"
+export PATH="$HOME/bin:$PATH:/usr/share/dotnet/:/usr/share/lua/bin:/usr/local/bin/lein:/home/gus/.dotnet/tools:/opt/homebrew/opt/php@8.4/bin"
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
@@ -43,3 +44,5 @@ source $ZSH/oh-my-zsh.sh
 bindkey '^[k' history-substring-search-up
 bindkey '^[j' history-substring-search-down
 bindkey '^F' autosuggest-accept
+
+export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
