@@ -73,6 +73,7 @@ link_folder() {
 link_folder "common/nvim" ".config/nvim"
 
 link_file "mac/.zshrc" ".zshrc"
+link_file "mac/.aerospace.toml" ".aerospace.toml"
 
 echo "✅ All symlinks created successfully."
 
