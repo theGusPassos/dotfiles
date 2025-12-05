@@ -7,7 +7,7 @@ global.maplocalleader = ","
 
 o.colorcolumn = "120"
 
-o.clipboard = 'unnamedplus'
+o.clipboard = 'unnamedplus,unnamed'
 o.completeopt = {'menu', 'menuone', 'noselect'}
 o.mouse = 'a'
 
