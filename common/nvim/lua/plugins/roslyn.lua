@@ -1,6 +1,15 @@
 vim.lsp.config("roslyn", {
     root_dir = function(fname)
-        return require("lspconfig").util.root_pattern("*.sln", "*.csproj")(fname)
+        local util = require("lspconfig").util
+
+        -- Scan current and parent directories manually:
+        return util.search_ancestors(fname, function(path)
+            for _, file in ipairs(vim.fn.readdir(path)) do
+                if file:match("%.sln$") or file:match("%.csproj$") then
+                    return path
+                end
+            end
+        end)
     end,
     settings = {
         ["csharp|inlay_hints"] = {
