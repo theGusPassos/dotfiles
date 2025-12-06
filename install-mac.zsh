@@ -74,6 +74,7 @@ link_folder "common/nvim" ".config/nvim"
 
 link_file "mac/.zshrc" ".zshrc"
 link_file "mac/.aerospace.toml" ".aerospace.toml"
+link_file "mac/.devpod/personal.devpod.yaml" ".devpod/personal.devpod.yaml"
 
 echo "✅ All symlinks created successfully."
 

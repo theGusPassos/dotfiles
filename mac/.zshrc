@@ -46,3 +46,5 @@ bindkey '^[j' history-substring-search-down
 bindkey '^F' autosuggest-accept
 
 export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
+
+eval "$(direnv hook zsh)"

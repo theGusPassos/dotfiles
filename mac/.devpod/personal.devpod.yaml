@@ -1,0 +1,46 @@
+repositories:
+  - repo: https://github.com/neovim/neovim
+    dest: ~/src/neovim
+  - repo: https://github.com/theGusPassos/dotfiles
+    dest: ~/dotfiles
+
+    # zsh plugins
+  - repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /tmp/plugins/zsh-autosuggestions
+  - repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: /tmp/plugins/zsh-syntax-highlighting
+  - repo: https://github.com/zsh-users/zsh-history-substring-search 
+    dest: /tmp/plugins/zsh-history-substring-search
+
+packages:
+  - cmake
+  - libtool-bin
+
+tasks:
+  - name: Install oh-my-zsh
+    command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    when: on-create
+
+  - name: Move zsh-autosuggestions
+    command: mv /tmp/plugins/zsh-autosuggestions /home/user/.oh-my-zsh/plugins
+    when: on-create
+
+  - name: Move zsh-syntax-highlighting
+    command: mv /tmp/plugins/zsh-syntax-highlighting /home/user/.oh-my-zsh/plugins
+    when: on-create
+
+  - name: Move zsh-history-substring-search
+    command: mv /tmp/plugins/zsh-history-substring-search /home/user/.oh-my-zsh/plugins
+    when: on-create
+
+  - name: Apply Dotfiles
+    when: on-create,on-restart
+    command: |
+      mkdir -p ~/.config
+
+      rm -f ~/.zshrc
+      rm -rf ~/.config/nvim
+
+      ln -s ~/dotfiles/mac/.zshrc ~/.zshrc
+      ln -s ~/dotfiles/common/nvim ~/.config/nvim
+
