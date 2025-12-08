@@ -47,4 +47,8 @@ bindkey '^F' autosuggest-accept
 
 export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
 
+# arc related
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 eval "$(direnv hook zsh)"
