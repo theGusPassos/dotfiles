@@ -33,6 +33,10 @@ tasks:
     command: mv /tmp/plugins/zsh-history-substring-search /home/user/.oh-my-zsh/plugins
     when: on-create
 
+  - name: start ulsp service
+    when: on-create,on-restart
+    command: tmux new-session -d -s ulsp 'cd /home/user/go-code && DEVPOD_FLAVOR=go ./tools/ide/ulsp/run-ulsp.sh'
+
   - name: Apply Dotfiles
     when: on-create,on-restart
     command: |
@@ -43,4 +47,5 @@ tasks:
 
       ln -s ~/dotfiles/mac/.zshrc ~/.zshrc
       ln -s ~/dotfiles/common/nvim ~/.config/nvim
+
 
