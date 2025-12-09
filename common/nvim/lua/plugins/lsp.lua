@@ -1,3 +1,37 @@
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'go',
+    callback = function(args)
+        vim.lsp.start({
+            cmd = { 'socat', '-', 'tcp:localhost:27883,ignoreeof' },
+            flags = {
+                debounce_text_changes = 300, -- Optimized from 1000ms
+            },
+            capabilities = capabilities,
+            filetypes = { 'go' },
+            root_dir = vim.fs.root(args.buf, { '.git' }),
+            single_file_support = false,
+            on_attach = function(client, bufnr)
+                -- Suppress connection messages
+                client.config.on_error = function() end
+                on_attach(client, bufnr)
+            end,
+            handlers = {
+                -- Suppress window/showMessage notifications
+                ["window/showMessage"] = function() end,
+                -- ["window/logMessage"] = function() end,
+            },
+            docs = {
+                description = [[
+                uLSP brought to you by the IDE team!
+                By utilizing uLSP in Neovim, you acknowledge that this integration is provided 'as-is' with no warranty, express or implied.
+                We make no guarantees regarding its functionality, performance, or suitability for any purpose, and absolutely no support will be provided.
+                Use at your own risk, and may the code gods have mercy on your soul
+              ]],
+            },
+        })
+    end,
+})
+
 vim.diagnostic.config({
     virtual_text = { spacing = 4, prefix = "●" },
     signs = {
@@ -66,8 +100,6 @@ return {
                     return on_dir((root or fallback))
                 end
             })
-            vim.lsp.enable('clojure_lsp')
-
             vim.lsp.config("lua_ls", {
                 settings = {
                     Lua = {
@@ -84,9 +116,6 @@ return {
                     },
                 },
             })
-            vim.lsp.enable("lua_ls")
-
-            vim.lsp.enable("vtsls")
             vim.lsp.config("vtsls", {
                 vtsls = {
                     eslint = {
@@ -106,7 +135,8 @@ return {
             })
 
             vim.lsp.config("jdtls", {})
-            vim.lsp.enable("jdtls")
+
+            vim.lsp.enable({ "clojure_lsp", "jdtls", "lua_ls", "vtsls" })
         end
     },
     {
