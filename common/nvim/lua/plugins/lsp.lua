@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd('FileType', {
             on_attach = function(client, bufnr)
                 -- Suppress connection messages
                 client.config.on_error = function() end
-                on_attach(client, bufnr)
             end,
             handlers = {
                 -- Suppress window/showMessage notifications
