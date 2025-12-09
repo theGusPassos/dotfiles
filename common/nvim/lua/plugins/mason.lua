@@ -1,8 +1,1 @@
-return {
-    {
-        "mason-org/mason.nvim",
-        opts = {
-            ensure_installed = { "clojure-lsp" },
-        }
-    },
-}
+return { "mason-org/mason.nvim", }

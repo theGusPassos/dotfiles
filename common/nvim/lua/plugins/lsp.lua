@@ -1,36 +1,3 @@
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'go',
-    callback = function(args)
-        vim.lsp.start({
-            cmd = { 'socat', '-', 'tcp:localhost:27883,ignoreeof' },
-            flags = {
-                debounce_text_changes = 300, -- Optimized from 1000ms
-            },
-            capabilities = capabilities,
-            filetypes = { 'go' },
-            root_dir = vim.fs.root(args.buf, { '.git' }),
-            single_file_support = false,
-            on_attach = function(client, bufnr)
-                -- Suppress connection messages
-                client.config.on_error = function() end
-            end,
-            handlers = {
-                -- Suppress window/showMessage notifications
-                ["window/showMessage"] = function() end,
-                -- ["window/logMessage"] = function() end,
-            },
-            docs = {
-                description = [[
-                uLSP brought to you by the IDE team!
-                By utilizing uLSP in Neovim, you acknowledge that this integration is provided 'as-is' with no warranty, express or implied.
-                We make no guarantees regarding its functionality, performance, or suitability for any purpose, and absolutely no support will be provided.
-                Use at your own risk, and may the code gods have mercy on your soul
-              ]],
-            },
-        })
-    end,
-})
-
 vim.diagnostic.config({
     virtual_text = { spacing = 4, prefix = "●" },
     signs = {
@@ -57,49 +24,75 @@ vim.diagnostic.config({
 })
 
 return {
+    -- LSP configuration
     {
         "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+        },
         config = function()
-            -- General LSP keymaps and setup
-            vim.api.nvim_create_autocmd("LspAttach", {
-                callback = function(args)
-                    local bufnr = args.buf
+            local opts = { noremap = true, silet = true }
 
-                    -- General LSP keymaps
-                    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
-                    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
-                    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
-                    vim.keymap.set("n", "<leader>f", function()
-                        vim.lsp.buf.format({ async = true })
-                    end, { buffer = bufnr })
+            -- LSP capabilities
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-                    vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
-                        buffer = bufnr,
-                        noremap = true,
-                        silent = true,
-                    })
+            -- LSP attach function
+            local on_attach = function(client, bufnr)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
+                vim.keymap.set("n", "<leader>f", function()
+                    vim.lsp.buf.format({ async = true })
+                end, { buffer = bufnr })
 
-                    -- Diagnostic keymaps
-                    vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float,
-                        { buffer = bufnr, desc = "Show line diagnostics" })
-                    vim.keymap.set("n", "<leader>th", function()
-                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-                    end, { buffer = bufnr, desc = "Toggle inlay hints" })
-                end
-            })
+                vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
+                    buffer = bufnr,
+                    noremap = true,
+                    silent = true,
+                })
 
-            vim.lsp.config("clojure_lsp", {
-                root_dir = function(bufnr, on_dir)
-                    local pattern = vim.api.nvim_buf_get_name(bufnr)
-                    local util = require("lspconfig.util")
-                    local fallback = vim.loop.cwd()
-                    local patterns = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git", "bb.edn" }
-                    local root = util.root_pattern(patterns)(pattern)
-                    return on_dir((root or fallback))
-                end
-            })
+                -- Diagnostic keymaps
+                vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float,
+                    { buffer = bufnr, desc = "Show line diagnostics" })
+                vim.keymap.set("n", "<leader>th", function()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                end, { buffer = bufnr, desc = "Toggle inlay hints" })
+            end
+
+            -- lua LSP - luals
             vim.lsp.config("lua_ls", {
+                cmd = { "lua-language-server" },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                on_init = function(client)
+                    if client.workspace_folders then
+                        local path = client.workspace_folders[1].name
+                        if
+                            path ~= vim.fn.stdpath('config')
+                            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                        then
+                            return
+                        end
+                    end
+
+                    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                        runtime = {
+                            version = 'LuaJIT',
+                            path = {
+                                'lua/?.lua',
+                                'lua/?/init.lua',
+                            },
+                        },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = {
+                                vim.env.VIMRUNTIME
+                            }
+                        }
+                    })
+                end,
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -113,12 +106,16 @@ return {
                             checkThirdParty = false,
                         },
                     },
-                },
+                }
             })
+
+            -- react typescript LSP
             vim.lsp.config("vtsls", {
+                on_attach = on_attach,
+                capabilities = capabilities,
                 vtsls = {
                     eslint = {
-                        enabled = false, -- ⛔ stops vtsls from delegating formatting to ESLint
+                        enabled = false,
                     },
                 },
                 settings = {
@@ -133,9 +130,62 @@ return {
                 }
             })
 
-            vim.lsp.config("jdtls", {})
+            -- java LSP from eclipse
+            vim.lsp.config("jdtls", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+            })
 
-            vim.lsp.enable({ "clojure_lsp", "jdtls", "lua_ls", "vtsls" })
+            -- go LSP
+            vim.lsp.config("gopls", {
+                cmd = { 'gopls', '-remote=auto' },
+                on_attach = on_attach,
+                capabilities = capabilities,
+                flags = {
+                    debounce_text_changes = 300,
+                },
+                settings = {
+                    gopls = {
+                        staticcheck = true,
+                    }
+                }
+            })
+
+            -- uber uLSP for go and java
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = 'go',
+                callback = function(args)
+                    vim.lsp.start({
+                        cmd = { 'socat', '-', 'tcp:localhost:27883,ignoreeof' },
+                        flags = {
+                            debounce_text_changes = 300, -- Optimized from 1000ms
+                        },
+                        capabilities = capabilities,
+                        filetypes = { 'go' },
+                        root_dir = vim.fs.root(args.buf, { '.git' }),
+                        single_file_support = false,
+                        on_attach = function(client, bufnr)
+                            -- Suppress connection messages
+                            client.config.on_error = function() end
+                        end,
+                        handlers = {
+                            -- Suppress window/showMessage notifications
+                            ["window/showMessage"] = function() end,
+                            -- ["window/logMessage"] = function() end,
+                        },
+                        docs = {
+                            description = [[
+                                uLSP brought to you by the IDE team!
+                                By utilizing uLSP in Neovim, you acknowledge that this integration is provided 'as-is' with no warranty, express or implied.
+                                We make no guarantees regarding its functionality, performance, or suitability for any purpose, and absolutely no support will be provided.
+                                Use at your own risk, and may the code gods have mercy on your soul
+                              ]],
+                        },
+                    })
+                end,
+            })
+
+            vim.lsp.enable({ "jdtls", "lua_ls", "vtsls" })
         end
     },
 }

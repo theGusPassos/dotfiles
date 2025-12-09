@@ -1,4 +1,5 @@
 return {
+    -- auto pairs {} ()
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -6,6 +7,8 @@ return {
         -- use opts = {} for passing setup options
         -- this is equivalent to setup({}) function
     },
+
+    -- DAP 
     {
         'mfussenegger/nvim-dap',
         config = function()
@@ -62,6 +65,8 @@ return {
     {
         'theHamsta/nvim-dap-virtual-text'
     },
+
+    -- ALE
     {
         'dense-analysis/ale',
         config = function()
@@ -73,6 +78,8 @@ return {
             }
         end
     },
+
+    -- auto tag
     {
         "windwp/nvim-ts-autotag",
         config = function()
