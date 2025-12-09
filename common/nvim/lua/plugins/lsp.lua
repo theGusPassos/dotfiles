@@ -185,7 +185,7 @@ return {
                 end,
             })
 
-            vim.lsp.enable({ "jdtls", "lua_ls", "vtsls" })
+            vim.lsp.enable({ "jdtls", "lua_ls", "vtsls", "gopls" })
         end
     },
 }
