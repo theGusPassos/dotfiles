@@ -26,7 +26,7 @@ bindkey -v
 autoload -Uz compinit
 compinit
 
-export PATH="$HOME/bin:$PATH:/usr/share/dotnet/:/usr/share/lua/bin:/usr/local/bin/lein:/home/gus/.dotnet/tools:/opt/homebrew/opt/php@8.4/bin"
+export PATH="$HOME/bin:$PATH:/usr/share/dotnet/:/usr/share/lua/bin:/usr/local/bin/lein:/home/gus/.dotnet/tools:/opt/homebrew/opt/php@8.4/bin:$HOME/go/bin/"
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
