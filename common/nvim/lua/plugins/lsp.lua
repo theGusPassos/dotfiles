@@ -47,6 +47,9 @@ return {
                     vim.lsp.buf.format({ async = true })
                 end, { buffer = bufnr })
 
+                -- using telescope
+                vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = bufnr, desc = "Open Telescope with References" })
+
                 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
                     buffer = bufnr,
                     noremap = true,
