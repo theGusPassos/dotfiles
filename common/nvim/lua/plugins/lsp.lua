@@ -1,4 +1,5 @@
 vim.diagnostic.config({
+
     virtual_text = { spacing = 4, prefix = "●" },
     signs = {
         text = {
@@ -48,7 +49,8 @@ return {
                 end, { buffer = bufnr })
 
                 -- using telescope
-                vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = bufnr, desc = "Open Telescope with References" })
+                vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references,
+                    { buffer = bufnr, desc = "Open Telescope with References" })
 
                 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {
                     buffer = bufnr,
@@ -161,6 +163,21 @@ return {
                         },
                     }
                 }
+            })
+
+            -- roslyn .net LSP
+            vim.lsp.config("roslyn", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    ["csharp|inlay_hints"] = {
+                        csharp_enable_inlay_hints_for_implicit_object_creation = true,
+                        csharp_enable_inlay_hints_for_implicit_variable_types = true,
+                    },
+                    ["csharp|code_lens"] = {
+                        dotnet_enable_references_code_lens = true,
+                    },
+                },
             })
 
             -- uber uLSP for go and java

@@ -75,6 +75,7 @@ return {
             g.ale_linters = {
                 go = { 'golangci-lint' },
                 lua = {},
+                cs = {},
             }
         end
     },
