@@ -6,6 +6,9 @@ return {
     },
     config = function()
         require("nvim-tree").setup({
+            notify = {
+                threshold = vim.log.levels.ERROR,
+            },
             filters = {
                 dotfiles = false,
             },
