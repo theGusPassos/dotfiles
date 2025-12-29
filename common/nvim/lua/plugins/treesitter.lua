@@ -13,6 +13,7 @@ return {
                 "gotmpl",
                 "html",
                 "java",
+                "markdown",
                 "sql",
                 "tsx",
             },

@@ -10,12 +10,9 @@ return {
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         build = "cd app && yarn install",
         init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
+            vim.g.mkdp_filetypes = { "markdown", "text" }
         end,
-        ft = { "markdown" },
-    },
-    {
-        "sindrets/diffview.nvim",
+        ft = { "markdown", "text" },
     },
     {
         'nvim-lualine/lualine.nvim',
@@ -35,7 +32,29 @@ return {
             vim.notify = require("notify")
         end
     },
+
+    -- git
     {
         "lewis6991/gitsigns.nvim",
+    },
+    {
+        "sindrets/diffview.nvim",
+    },
+
+    -- focus & writing
+    {
+        "folke/twilight.nvim",
+        opts = {
+            context = 3,
+        }
+    },
+    {
+        "folke/zen-mode.nvim",
+        opts = {
+        }
+    },
+    {
+        "preservim/vim-pencil",
+        ft =  { "markdown", "text" },
     }
 }
