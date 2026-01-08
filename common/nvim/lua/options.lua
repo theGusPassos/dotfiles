@@ -7,7 +7,12 @@ global.maplocalleader = ","
 
 o.colorcolumn = "120"
 
-o.clipboard = 'unnamedplus,unnamed'
+if vim.fn.has("clipboard") == 1 then
+    o.clipboard = "unnamedplus"
+else 
+    o.clipboard = "unnamed"
+end
+
 o.completeopt = {'menu', 'menuone', 'noselect'}
 o.mouse = 'a'
 

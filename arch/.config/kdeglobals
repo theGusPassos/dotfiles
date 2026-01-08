@@ -165,11 +165,11 @@ XwaylandClientsScale=true
 Dialog Size=1084,786
 
 [WM]
-frame=61,174,233
-inactiveFrame=239,240,241
 activeBackground=227,229,231
 activeBlend=227,229,231
 activeForeground=35,38,41
+frame=61,174,233
 inactiveBackground=239,240,241
 inactiveBlend=239,240,241
 inactiveForeground=112,125,138
+inactiveFrame=239,240,241
