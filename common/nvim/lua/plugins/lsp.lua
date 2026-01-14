@@ -215,27 +215,28 @@ return {
             })
 
             -- python LSP - pylsp
-            -- vim.lsp.config("pylsp", {
-            --     on_attach = on_attach,
-            --     capabilities = capabilities,
-            --     settings = {
-            --         pylsp = {
-            --             plugins = {
-            --                 pycodestyle = { enabled = false },
-            --                 flake8 = { enabled = true },
-            --                 pylint = { enabled = false },
-            --                 autopep8 = { enabled = true },
-            --                 yapf = { enabled = false },
-            --             },
-            --         },
-            --     },
-            -- })
+            vim.lsp.config("pylsp", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pycodestyle = { enabled = false },
+                            flake8 = { enabled = true },
+                            pylint = { enabled = false },
+                            autopep8 = { enabled = true },
+                            yapf = { enabled = false },
+                        },
+                    },
+                },
+            })
 
             vim.lsp.enable({
                 "jdtls",
                 "lua_ls",
                 "vtsls",
                 "gopls",
+                "pylsp"
             })
         end
     },
