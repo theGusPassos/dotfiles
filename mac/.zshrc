@@ -47,8 +47,12 @@ bindkey '^F' autosuggest-accept
 
 export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
 
+# Created by `pipx` on 2026-01-14 17:03:23
+export PATH="$PATH:/Users/gustavo.passos/.local/bin"
+
 # arc related
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 eval "$(direnv hook zsh)"
+
