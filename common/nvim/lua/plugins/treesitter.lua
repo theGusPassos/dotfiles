@@ -14,6 +14,7 @@ return {
                 "html",
                 "java",
                 "markdown",
+                "python",
                 "sql",
                 "tsx",
             },
