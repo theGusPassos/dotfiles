@@ -26,6 +26,14 @@ return {
                 },
             },
         },
+        keys = {
+            {
+                "<leader>ac",
+                function() require("avante").add_current_file() end,
+                desc = "Avante: Add current buffer to context",
+                mode = "n"
+            }
+        },
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
