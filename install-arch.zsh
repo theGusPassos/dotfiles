@@ -73,6 +73,7 @@ link_folder() {
 link_folder "common/nvim" ".config/nvim"
 
 link_file "arch/.zshrc" ".zshrc"
+link_file "common/.tmux.conf" ".tmux.conf"
 link_files_in_folder "arch/.config" ".config"
 link_folder "arch/.local/share/kwin/scripts/krohnkite" ".local/share/kwin/scripts/krohnkite"
 link_folder "arch/.local/share/konsole" ".local/share/konsole"

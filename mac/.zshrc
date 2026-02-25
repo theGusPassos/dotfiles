@@ -2,6 +2,10 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+if [[ -z "$TMUX" ]]; then
+    tmux attach-session -t default || tmux new-session -s default
+fi
+
 # oh-my-zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
 
