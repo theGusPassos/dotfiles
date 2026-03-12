@@ -2,16 +2,14 @@ return {
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
-        version = false, -- Never set this value to "*"! Never!
-        ---@module 'avante'
-        ---@type avante.Config
         opts = {
-            provider = "copilot",
+            provider = "ollama",
             providers = {
-                copilot = {
-                    model = "claude-sonnet-4",
+                ollama = {
+                    endpoint = "http://127.0.0.1:11434",
+                    model = "deepseek-r1:7b",
                 },
-            },
+            }
         },
         keys = {
             {

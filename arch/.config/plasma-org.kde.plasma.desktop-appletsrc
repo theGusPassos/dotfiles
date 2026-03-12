@@ -46,12 +46,14 @@ plugin=org.kde.plasma.panelspacer
 immutability=1
 plugin=org.kde.plasma.lock_logout
 
+[Containments][21][Applets][27][Configuration][General]
+actionsOrder=lockScreen,switchUser,requestShutDown,requestReboot,requestLogout,requestLogoutScreen,suspendToRam,suspendToDisk
+
 [Containments][21][Applets][28]
 immutability=1
 plugin=Plasma.Control.Hub
 
 [Containments][21][Applets][28][Configuration]
-PreloadWeight=60
 popupHeight=439
 popupWidth=324
 
@@ -64,7 +66,6 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][21][Applets][3][Configuration]
-PreloadWeight=100
 popupHeight=509
 popupWidth=647
 
@@ -76,7 +77,6 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][21][Applets][30][Configuration]
-PreloadWeight=100
 popupHeight=451
 popupWidth=560
 
@@ -103,9 +103,6 @@ plugin=org.kde.plasma.keyboardlayout
 immutability=1
 plugin=org.kde.plasma.devicenotifier
 
-[Containments][21][Applets][31][Applets][33][Configuration]
-PreloadWeight=100
-
 [Containments][21][Applets][31][Applets][34]
 immutability=1
 plugin=org.kde.plasma.cameraindicator
@@ -117,9 +114,6 @@ plugin=org.kde.plasma.clipboard
 [Containments][21][Applets][31][Applets][36]
 immutability=1
 plugin=org.kde.plasma.notifications
-
-[Containments][21][Applets][31][Applets][36][Configuration]
-PreloadWeight=55
 
 [Containments][21][Applets][31][Applets][37]
 immutability=1
@@ -140,9 +134,6 @@ migrated=true
 immutability=1
 plugin=org.kde.plasma.volume
 
-[Containments][21][Applets][31][Applets][40][Configuration]
-PreloadWeight=20
-
 [Containments][21][Applets][31][Applets][40][Configuration][General]
 migrated=true
 
@@ -150,36 +141,21 @@ migrated=true
 immutability=1
 plugin=org.kde.plasma.brightness
 
-[Containments][21][Applets][31][Applets][41][Configuration]
-PreloadWeight=0
-
 [Containments][21][Applets][31][Applets][42]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
-
-[Containments][21][Applets][31][Applets][42][Configuration]
-PreloadWeight=100
 
 [Containments][21][Applets][31][Applets][69]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
-[Containments][21][Applets][31][Applets][69][Configuration]
-PreloadWeight=0
-
 [Containments][21][Applets][31][Applets][70]
 immutability=1
 plugin=org.kde.plasma.battery
 
-[Containments][21][Applets][31][Applets][70][Configuration]
-PreloadWeight=0
-
 [Containments][21][Applets][31][Applets][85]
 immutability=1
 plugin=org.kde.plasma.mediacontroller
-
-[Containments][21][Applets][31][Applets][85][Configuration]
-PreloadWeight=0
 
 [Containments][21][Applets][31][ConfigDialog]
 DialogHeight=540
