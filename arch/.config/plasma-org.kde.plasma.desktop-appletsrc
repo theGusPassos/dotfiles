@@ -54,7 +54,7 @@ immutability=1
 plugin=Plasma.Control.Hub
 
 [Containments][21][Applets][28][Configuration]
-popupHeight=439
+popupHeight=358
 popupWidth=324
 
 [Containments][21][Applets][29]
@@ -135,6 +135,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][21][Applets][31][Applets][40][Configuration][General]
+currentTab=streams
 migrated=true
 
 [Containments][21][Applets][31][Applets][41]
