@@ -22,7 +22,7 @@ wallpaperplugin=org.kde.image
 positions={"2752x1152":[],"3440x1440":[]}
 
 [Containments][1][Wallpaper][org.kde.image][General]
-Image=/home/gus/dotfiles/common/wallpapers/sailor_moon_ultrawide.png
+Image=/home/gus/Downloads/707578-1857460545.png
 SlidePaths=/home/gus/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][21]
@@ -211,7 +211,7 @@ wallpaperplugin=org.kde.image
 positions={"1920x1080":[]}
 
 [Containments][71][Wallpaper][org.kde.image][General]
-Image=/home/gus/dotfiles/common/wallpapers/sailor_moon_ultrawide.png
+Image=/home/gus/Downloads/707578-1857460545.png
 
 [Containments45Appletsts][68][Configuration][General]
 launchers=preferred://browser,preferred://filemanager

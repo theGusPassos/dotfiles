@@ -85,19 +85,19 @@ return
             },
         })
 
-        vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(ev)
-                local client = vim.lsp.get_client_by_id(ev.data.client_id)
-                if client and client.name == "roslyn" then
-                    vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost" }, {
-                        buffer = ev.buf,
-                        callback = function()
-                            vim.lsp.codelens.refresh({ bufnr = ev.buf })
-                        end,
-                    })
-                end
-            end,
-        })
+        -- vim.api.nvim_create_autocmd("LspAttach", {
+        --     callback = function(ev)
+        --         local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        --         if client and client.name == "roslyn" then
+        --             vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost" }, {
+        --                 buffer = ev.buf,
+        --                 callback = function()
+        --                     vim.lsp.codelens.refresh({ bufnr = ev.buf })
+        --                 end,
+        --             })
+        --         end
+        --     end,
+        -- })
 
         vim.api.nvim_create_user_command("RoslynSolution", function()
             local sln = vim.g.roslyn_nvim_selected_solution

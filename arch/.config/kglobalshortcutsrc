@@ -440,10 +440,6 @@ _launch=Meta+Alt+T
 [services][org.kde.konsole.desktop]
 _launch=Ctrl+Alt+T\tMeta+T
 
-[services][org.kde.spectacle.desktop]
-CurrentMonitorScreenShot=none
-OpenWithoutScreenshot=none
-
 [services][systemsettings.desktop]
 _launch=\tTools
 
