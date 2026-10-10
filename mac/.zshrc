@@ -2,14 +2,15 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-if [[ -z "$TMUX" ]]; then
-    tmux attach-session -t default || tmux new-session -s default
-fi
+# if [[ -z "$TMUX" ]]; then
+#    tmux attach-session -t default || tmux new-session -s default
+# fi
 
 # oh-my-zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="eastwood"
+
 plugins=(
     git
     emotty
@@ -24,8 +25,6 @@ setopt beep
 setopt extendedglob
 setopt nomatch
 setopt notify
-
-bindkey -v
 
 autoload -Uz compinit
 compinit
@@ -45,18 +44,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 source $ZSH/oh-my-zsh.sh
 
+bindkey -v
 bindkey '^[k' history-substring-search-up
 bindkey '^[j' history-substring-search-down
 bindkey '^F' autosuggest-accept
 
 export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
 
-# Created by `pipx` on 2026-01-14 17:03:23
-export PATH="$PATH:/Users/gustavo.passos/.local/bin"
-
-# arc related
-export VISUAL=nvim
-export EDITOR="$VISUAL"
-
 eval "$(direnv hook zsh)"
-
