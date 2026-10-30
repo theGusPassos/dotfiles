@@ -29,7 +29,7 @@ setopt notify
 autoload -Uz compinit
 compinit
 
-export PATH="$HOME/bin:$PATH:/usr/share/dotnet/:/usr/share/lua/bin:/usr/local/bin/lein:/home/gus/.dotnet/tools:/opt/homebrew/opt/php@8.4/bin:$HOME/go/bin/"
+export PATH="$HOME/bin:$PATH:/usr/share/dotnet/:/usr/share/lua/bin:/usr/local/bin/lein:/home/gus/.dotnet/tools:/opt/homebrew/opt/php@8.4/bin:$HOME/go/bin/:$HOME/.local/bin"
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
@@ -52,3 +52,11 @@ bindkey '^F' autosuggest-accept
 export PATH="/opt/homebrew/opt/php@8.4/bin:$PATH"
 
 eval "$(direnv hook zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# GitHub MCP (Claude Code engineer plugin) — reuse gh CLI token
+export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token 2>/dev/null)"

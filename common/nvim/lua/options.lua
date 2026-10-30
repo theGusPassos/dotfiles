@@ -42,3 +42,17 @@ o.splitright = true
 o.ignorecase = true
 o.termguicolors = true
 
+
+-- Strip inline comments (`indent_size = 4 # ...`), which VS/Rider accept but nvim's parser rejects
+local editorconfig = require("editorconfig")
+for name, apply in pairs(editorconfig.properties) do
+    editorconfig.properties[name] = function(bufnr, val, opts)
+        if type(val) == "string" then
+            val = val:gsub("%s+[#;].*$", "")
+        end
+        return apply(bufnr, val, opts)
+    end
+end
+
+-- Ignore editorconfig end_of_line; let git/.gitattributes own line endings
+editorconfig.properties.end_of_line = function() end
