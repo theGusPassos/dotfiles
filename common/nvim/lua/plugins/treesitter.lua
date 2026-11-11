@@ -1,28 +1,33 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
+    lazy = false, -- main doesn't support lazy-loading
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter.configs").setup({
-            ensure_installed = {
-                "c_sharp",
-                "clojure",
-                "go",
-                "gomod",
-                "gosum",
-                "gotmpl",
-                "html",
-                "java",
-                "markdown",
-                -- "python",
-                "sql",
-                "tsx",
-            },
+        local langs = {
+            "c_sharp",
+            "clojure",
+            "go",
+            "gomod",
+            "gosum",
+            "gotmpl",
+            "html",
+            "java",
+            "markdown",
+            "markdown_inline",
+            -- "python",
+            "sql",
+            "tsx",
+        }
+        require("nvim-treesitter").install(langs)
 
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = true,
-            },
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function(args)
+                if pcall(vim.treesitter.start, args.buf) then
+                    -- equivalent of additional_vim_regex_highlighting = true
+                    vim.bo[args.buf].syntax = "on"
+                end
+            end,
         })
     end,
 }
