@@ -14,6 +14,10 @@ Magnification=2
 [Input]
 TabletMode=off
 
+[NightColor]
+Active=true
+NightTemperature=5300
+
 [Plugins]
 blurEnabled=true
 karouselEnabled=true
